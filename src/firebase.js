@@ -4,13 +4,6 @@ import "firebase/firestore";
 import "firebase/storage";
 import "firebase/database";
 
-// var firebaseConfig = {};
-console.log(process.env.REACT_APP_APIKEY)
-console.log(process.env.REACT_APP_AUTHDOMAIN)
-console.log(process.env.REACT_APP_PROJECTID)
-console.log(process.env.REACT_APP_STORAGEBUCKET)
-console.log(process.env.REACT_APP_MESSAGINGSENDERID)
-console.log(process.env.REACT_APP_APPID)
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_APIKEY,
