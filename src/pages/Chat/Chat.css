@@ -179,12 +179,15 @@
 }
 
 .chat__message--message {
-  margin-right: 54px;
+  margin-right: 64px;
 }
 
 .chat__message--sender {
   margin-left: auto;
   background-color: #dcf8c6;
+}
+.chat__message--sender .chat__message--message {
+  margin-right: 78px;
 }
 
 .chat__lastMessage {
@@ -244,13 +247,14 @@
 }
 
 .chat__timestamp {
-  font-size: 10px;
+  font-size: 12px;
   text-align: right;
   color: grey;
-  display: block;
+  display: flex;
   position: absolute;
     right: 7px;
     bottom: 3px;
+    align-items: center;
 }
 
 .scroll {

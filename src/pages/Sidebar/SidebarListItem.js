@@ -66,16 +66,17 @@ export default function SidebarListItem({ item }) {
                   className=" sidebar__action sidebar__action-icon sidebar__action-icon--status"
                 />
               ) : lastMessages?.name ? (
-                lastMessages.name
+                lastMessages.name + ": "
               ) : (
                 <span>
                   {item?.createdby} created group "{item.name}"{" "}
                 </span>
               )}
               <span>
-                {lastMessage?.length > 15
+                {lastMessage}
+                {/* {lastMessage?.length > 15
                   ? lastMessage.substr(0, 15) + "..."
-                  : lastMessage}
+                  : lastMessage} */}
               </span>
             </div>
           ) : (
@@ -89,9 +90,10 @@ export default function SidebarListItem({ item }) {
                 " "
               )}
               <span>
-                {lastMessage?.length > 15
+                {/* {lastMessage?.length > 15
                   ? lastMessage.substr(0, 15) + "..."
-                  : lastMessage}
+                  : lastMessage} */}
+                     {lastMessage}
               </span>
             </div>
           )}

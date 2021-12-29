@@ -281,6 +281,7 @@ const icons = {
 			width="16"
 			height="15"
 			{...props}
+			className="doubletick_icon"
 		>
 			<path
 				fill="currentColor"

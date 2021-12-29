@@ -36,7 +36,7 @@ export default function ChatMessages({
     ];
 
     //  messagebox length
-    const messagelength = message.length > 30;
+    const messagelength = message.message.length > 30;
 
     let color = colorarr[Math.floor(Math.random() * colorarr.length)];
     return (
@@ -90,7 +90,7 @@ export default function ChatMessages({
         )}
 
         <span className="chat__timestamp">
-          {finalTime}
+        <span style={{marginRight:"5px"}}>  {finalTime}</span>
           {isSender ? (
             room?.type === "room" ? (
               <Icon
