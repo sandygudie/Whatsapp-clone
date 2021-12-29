@@ -1,6 +1,6 @@
 import { Avatar } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import { auth, createTimestamp, db } from "../../firebase";
+import { auth } from "../../firebase";
 import useChatMessages from "../../hooks/useChatMessages";
 import Icon from "../../components/Icon";
 
@@ -9,9 +9,6 @@ export default function SidebarListItem({ item }) {
   const messages = useChatMessages(item.id);
 
   if (!messages) return null;
-  // if (!messages.length ) return item ;
-
-  // console.log(item)
 
   let lastMessages;
   let isSender;

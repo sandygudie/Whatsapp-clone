@@ -1,26 +1,22 @@
-import React from "react"
+import React from "react";
 import { Avatar } from "@material-ui/core";
-import {
-  
-  SearchOutlined
-} from "@material-ui/icons";
+import { SearchOutlined } from "@material-ui/icons";
 import SidebarList from "./SidebarList";
 import { auth, createTimestamp, db } from "../../firebase";
 import "./Sidebar.css";
-import { NavLink, Switch, Route } from "react-router-dom";
+import {  Switch, Route } from "react-router-dom";
 import useRooms from "../../hooks/useRooms";
 import useUsers from "../../hooks/useUsers";
 import useChats from "../../hooks/useChats";
 import Icon from "../../components/Icon";
-import OptionsBtn from "../../components/OptionsButton"
-import Tooltips from "../../components/Tooltips/Tooltips"
+import OptionsBtn from "../../components/OptionsButton";
+import Tooltips from "../../components/Tooltips/Tooltips";
 
 export default function Sidebar({ user, page }) {
   const rooms = useRooms();
 
   const users = useUsers(user);
   const chats = useChats(user, rooms);
-
 
   const [searchResults, setSearchResults] = React.useState([]);
   const [menu, setMenu] = React.useState(1);
@@ -29,19 +25,18 @@ export default function Sidebar({ user, page }) {
     auth.signOut();
   }
 
- 
   function createRoom() {
     const user = auth.currentUser;
     const roomName = prompt("Type the name of your room");
- 
- if(roomName === null){
-   return
- }
-  if (roomName.trim()) {
+
+    if (roomName === null) {
+      return;
+    }
+    if (roomName.trim()) {
       db.collection("rooms").add({
         name: roomName.charAt(0).toUpperCase() + roomName.slice(1),
         type: "room",
-        createdby : user.displayName ,
+        createdby: user.displayName,
         timestamp: createTimestamp(),
       });
     }
@@ -71,20 +66,20 @@ export default function Sidebar({ user, page }) {
     setSearchResults(searchResults);
   }
 
-  let Nav;
-  if (page.isMobile) {
-    Nav = NavLink;
-  } else {
-    Nav = (props) => (
-      <div
-        className={`${props.activeClass ? "sidebar__menu--selected" : ""}`}
-        onClick={props.onClick}
-      >
-        {props.children}
-      </div>
-    );
-  }
-  
+  // let Nav;
+  // if (page.isMobile) {
+  //   Nav = NavLink;
+  // } else {
+  //   Nav = (props) => (
+  //     <div
+  //       className={`${props.activeClass ? "sidebar__menu--selected" : ""}`}
+  //       onClick={props.onClick}
+  //     >
+  //       {props.children}
+  //     </div>
+  //   );
+  // }
+
   return (
     <div
       className="sidebar"
@@ -98,60 +93,47 @@ export default function Sidebar({ user, page }) {
           <h4>{user?.displayName}</h4>
         </div>
         <div className="sidebar__header--right">
-        
-        <Tooltips text="Status">
-						<Icon
-							id="status"
-							className=" sidebar__action sidebar__action-icon sidebar__action-icon--status"
-						/>
-				</Tooltips>
-				<Tooltips text=" New chat ">
-						<Icon id="chat" className=" sidebar__action sidebar__action-icon" />
-            </Tooltips>
-            <Tooltips text="Menu">
-
-					<OptionsBtn
-    
-						className="sidebar__action"
-						ariaLabel="Menu"
-						iconId="menu"
-						iconClassName="sidebar__action-icon"
-						options={[
-							{
-                title: "New group",
-                link: createRoom
-
-            },
-            {
-              title: 	"Archived",
-             
-
-          },
-          {
-            title: 	"Starred",
-            
-        },
-        {
-          title: "Settings",
-          
-
-      },
-      {
-        title: "Log out",
-        link: signOut
-
-    }
-						]}
-					/>
-			</Tooltips>
+          <Tooltips text="Status">
+            <Icon
+              id="status"
+              className=" sidebar__action sidebar__action-icon sidebar__action-icon--status"
+            />
+          </Tooltips>
+          <Tooltips text=" New chat ">
+            <Icon id="chat" className=" sidebar__action sidebar__action-icon" />
+          </Tooltips>
+          <Tooltips text="Menu">
+            <OptionsBtn
+              className="sidebar__action"
+              ariaLabel="Menu"
+              iconId="menu"
+              iconClassName="sidebar__action-icon"
+              options={[
+                {
+                  title: "New group",
+                  link: createRoom,
+                },
+                {
+                  title: "Archived",
+                },
+                {
+                  title: "Starred",
+                },
+                {
+                  title: "Settings",
+                },
+                {
+                  title: "Log out",
+                  link: signOut,
+                },
+              ]}
+            />
+          </Tooltips>
         </div>
       </div>
 
       <div className="sidebar__search">
-        <form
-         
-          className="sidebar__search--container"
-        >
+        <form className="sidebar__search--container">
           <SearchOutlined />
           <input
             placeholder="Search for users or rooms"
@@ -161,8 +143,6 @@ export default function Sidebar({ user, page }) {
           />
         </form>
       </div>
-
-     
 
       {page.isMobile ? (
         <Switch>
@@ -189,16 +169,7 @@ export default function Sidebar({ user, page }) {
         <SidebarList title="Search Results" data={searchResults} />
       ) : null}
 
-      {/* <div className="sidebar__chat--addRoom">
-        <IconButton onClick={createRoom}>
-          <Add />
-        </IconButton>
-
-
-       
-      </div> */}
-
-     {/* <OptionsButton />   */}
+   
     </div>
   );
 }
