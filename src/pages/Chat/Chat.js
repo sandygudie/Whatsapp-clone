@@ -169,7 +169,7 @@ export default function Chat({ user, page }) {
 
         {room?.type === "room" ? (
           <div className="room__Avatar">
-            <i class="fas fa-user-friends"></i>
+            <i className="fas fa-user-friends"></i>
           </div>
         ) : (
           <div className="avatar__container">

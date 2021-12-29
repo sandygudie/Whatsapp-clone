@@ -55,7 +55,7 @@ const OptionsBtn = ({
 				} ${position === "right" ? "options-btn__options--right" : ""}`}
 			>
 				{options.map((option, index) => (
-					<li onClick ={option.link} className="options-btn__option" key={index}>
+					<li onClick ={option?.link} className="options-btn__option" key={index}>
 						{option.title}
 					</li>
 				))}

@@ -41,7 +41,7 @@ export default function SidebarListItem({ item }) {
       <div className="sidebar__chat">
         {item.type === "room" ? (
           <div className="room__Avatar">
-            <i class="fas fa-user-friends"></i>
+            <i className="fas fa-user-friends"></i>
           </div>
         ) : (
           <div className="avatar__container">

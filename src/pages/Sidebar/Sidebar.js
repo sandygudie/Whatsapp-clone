@@ -32,14 +32,14 @@ export default function Sidebar({ user, page }) {
  
   function createRoom() {
     const user = auth.currentUser;
-    const nameInput = prompt("Type the name of your room");
-  let  roomName =  nameInput.charAt(0).toUpperCase() + nameInput.slice(1);
+    const roomName = prompt("Type the name of your room");
+ 
  if(roomName === null){
    return
  }
   if (roomName.trim()) {
       db.collection("rooms").add({
-        name: roomName,
+        name: roomName.charAt(0).toUpperCase() + roomName.slice(1),
         type: "room",
         createdby : user.displayName ,
         timestamp: createTimestamp(),
@@ -124,17 +124,16 @@ export default function Sidebar({ user, page }) {
             },
             {
               title: 	"Archived",
-              link: ""
+             
 
           },
           {
             title: 	"Starred",
-            link: ""
-
+            
         },
         {
           title: "Settings",
-          link: ""
+          
 
       },
       {
