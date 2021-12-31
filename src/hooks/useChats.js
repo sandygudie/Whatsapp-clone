@@ -10,7 +10,7 @@ export default function useChats(user) {
   if (!users) return null;
   const roomUsers = rooms.concat(users);
 
-  
+
 
   return roomUsers;
 }

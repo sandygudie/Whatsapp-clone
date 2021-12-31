@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import { auth } from "../../firebase";
 import useChatMessages from "../../hooks/useChatMessages";
 import Icon from "../../components/Icon";
+// import { MdInsertPhoto} from "@material-ui/icons";
+
+import PhotoIcon from '@material-ui/icons/Photo';
+
 
 export default function SidebarListItem({ item }) {
   const user = auth.currentUser;
@@ -58,8 +62,9 @@ export default function SidebarListItem({ item }) {
             <span>{lastMessagetime}</span>
           </div>
 
+<div className="sidebar_chat--bottom">
           {item.type === "room" ? (
-            <div className="sidebar__chat--message">
+            <span className="sidebar__chat--message">
               {isSender ? (
                 <Icon
                   id="singleTick"
@@ -72,15 +77,9 @@ export default function SidebarListItem({ item }) {
                   {item?.createdby} created group "{item.name}"{" "}
                 </span>
               )}
-              <span>
-                {lastMessage}
-                {/* {lastMessage?.length > 15
-                  ? lastMessage.substr(0, 15) + "..."
-                  : lastMessage} */}
-              </span>
-            </div>
+            </span>
           ) : (
-            <div className="sidebar__chat--message">
+            <span className="sidebar__chat--message">
               {isSender ? (
                 <Icon
                   id="doubleTick"
@@ -89,14 +88,31 @@ export default function SidebarListItem({ item }) {
               ) : (
                 " "
               )}
-              <span>
-                {/* {lastMessage?.length > 15
-                  ? lastMessage.substr(0, 15) + "..."
-                  : lastMessage} */}
-                     {lastMessage}
-              </span>
-            </div>
+            </span>
           )}
+          
+          <span className="sidebar__chat--lastmessage">
+            {lastMessage ? (
+              lastMessage 
+            ) : lastMessages?.audioUrl ? (
+              <>
+                <Icon
+                  id="microphone"
+                  className=" sidebar__action sidebar__action-icon sidebar__action-icon--status"
+                />
+                <span>Audio</span>
+              </>
+            ) : lastMessages?.imageUrl ? (
+              <>
+              
+               <PhotoIcon className=" photo__icon" />
+                <span>Photo</span>
+              </>
+            ) : (
+              " "
+            )}
+          </span>
+        </div>
         </div>
       </div>
     </Link>

@@ -28,7 +28,6 @@ export default function SidebarList({ title, data }) {
 
   return (
     <div className="sidebar__chat--container">
-
       {data.map((item) => (
         <SidebarListItem key={item.id} item={item} />
       ))}

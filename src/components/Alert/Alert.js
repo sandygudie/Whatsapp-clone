@@ -1,6 +1,6 @@
 import React from "react";
-import Icon from "components/Icon";
-
+import Icon from "../Icon";
+import  "./Alert.css"
 const alerts = [
 	<div className="sidebar__alert sidebar__alert--info">
 		<div className="sidebar__alert-icon-wrapper">
@@ -34,6 +34,7 @@ const alerts = [
 					className="underline"
 					href="https://faq.whatsapp.com/web/troubleshooting/cant-connect-to-whatsapp-web-or-desktop/"
 					target="_blank"
+					rel="noreferrer"
 				>
 					{" "}
 					Learn more.{" "}

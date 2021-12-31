@@ -1,6 +1,6 @@
 import React from "react";
 import { Avatar } from "@material-ui/core";
-import { SearchOutlined } from "@material-ui/icons";
+
 import SidebarList from "./SidebarList";
 import { auth, createTimestamp, db } from "../../firebase";
 import "./Sidebar.css";
@@ -11,6 +11,7 @@ import useChats from "../../hooks/useChats";
 import Icon from "../../components/Icon";
 import OptionsBtn from "../../components/OptionsButton";
 import Tooltips from "../../components/Tooltips/Tooltips";
+import Alert from "../../components/Alert/Alert";
 
 export default function Sidebar({ user, page }) {
   const rooms = useRooms();
@@ -42,6 +43,16 @@ export default function Sidebar({ user, page }) {
     }
   }
 
+ function onSubmitSearch(event) {
+   console.log("ihear")
+  event.preventDefault();
+  event.target.elements.search.value = " "
+  setMenu(1);
+  }
+  function refreshSearch() {
+    
+   setMenu(1);
+   }
   async function searchUsersAndRooms(event) {
     event.preventDefault();
     const query = event.target.value;
@@ -132,17 +143,30 @@ export default function Sidebar({ user, page }) {
         </div>
       </div>
 
-      <div className="sidebar__search">
-        <form className="sidebar__search--container">
-          <SearchOutlined />
-          <input
-            placeholder="Search for users or rooms"
-            type="text"
-            id="search"
-            onChange={searchUsersAndRooms}
-          />
-        </form>
-      </div>
+
+      <Alert />
+
+<div >
+<form onSubmit = {onSubmitSearch} className="search-wrapper"autoComplete = "false" >
+  <div className="search-icons">
+  <Icon id="search" className="search-icon" />
+
+<Icon  onClick ={refreshSearch} className="search__back-btn" id="back" />
+
+  </div>
+
+ 
+
+<input
+type="text"
+ className="search" 
+ id="search"
+placeholder="Search or start a new chat" 
+onfocus="this.placeholder = ''"
+onChange={searchUsersAndRooms} />
+</form>
+</div>
+
 
       {page.isMobile ? (
         <Switch>

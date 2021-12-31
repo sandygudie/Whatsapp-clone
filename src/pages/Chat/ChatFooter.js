@@ -3,7 +3,9 @@ import {
   CheckCircleRounded,
   MicRounded,
   Send,
+  
 } from "@material-ui/icons";
+import DeleteIcon from '@material-ui/icons/Delete';
 import React from "react";
 import { createTimestamp, db, audioStorage } from "../../firebase";
 import { v4 as uuid } from "uuid";
@@ -28,15 +30,7 @@ export default function ChatFooter({
   const record = React.useRef();
   const inputRef = React.useRef();
 
-  async function startRecording(event) {
-    event.preventDefault();
-    record.current = await recordAudio();
-    inputRef.current.focus();
-    inputRef.current.style.width = "calc(100% - 56px)";
-    setRecording(true);
-    setAudioId("");
-  }
-
+ 
   React.useEffect(() => {
     if (isRecording) {
       recordingEl.current.style.opacity = "1";
@@ -59,6 +53,16 @@ export default function ChatFooter({
     }
   }, [isRecording]);
 
+  async function startRecording(event) {
+    event.preventDefault();
+    record.current = await recordAudio();
+    inputRef.current.focus();
+    // inputRef.current.style.width = "calc(100% - 56px)";
+    setRecording(true);
+    setAudioId("");
+  }
+
+  
   function pad(value) {
     return String(value).length < 2 ? `0${value}` : value;
   }
@@ -187,11 +191,11 @@ export default function ChatFooter({
 
       {isRecording && (
         <div ref={recordingEl} className="record">
-          <CancelRounded
+          <DeleteIcon 
             style={{
               width: 30,
               height: 30,
-              color: "#f20519",
+              color: "hsl(240deg 8% 46%)",
             }}
             onClick={stopRecording}
           />

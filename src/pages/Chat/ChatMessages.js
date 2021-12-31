@@ -36,16 +36,18 @@ export default function ChatMessages({
     ];
 
     //  messagebox length
-    const messagelength = message.message.length > 30;
+    // const messagelength = message.message.length > 30;
 
     let color = colorarr[Math.floor(Math.random() * colorarr.length)];
     return (
       <div
         key={message.id}
-        style={{ width: messagelength ? " 500px" : "fit-content" }}
+        style={{ width: message.message?.length > 30 || message.audioUrl ?  " 500px" : "fit-content" }}
         className={`chat__message ${
           isSender ? "chat__message--sender sender--message" : "message--others"
         }`}
+
+       
       >
         {room?.type === "room" ? (
           !isSender ? (

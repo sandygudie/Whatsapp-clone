@@ -41,6 +41,7 @@ export default function Chat({ user, page }) {
     if (input.trim() || (input === "" && image)) {
       setInput("");
       if (image) {
+        console.log(image)
         closePreview();
       }
       const imageName = uuid();

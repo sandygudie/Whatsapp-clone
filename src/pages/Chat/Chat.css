@@ -129,6 +129,7 @@
 }
 .chat__room--createdby{
   padding:1em;
+  font-size: 15px;
 }
 .chat_details>*:nth-child(1):not(.sender--message)::before, .sender--message+.message--others::before {
 
@@ -167,7 +168,7 @@
 .chat__message {
   z-index: 0;
   position: relative;
-  font-size: 16px;
+  font-size: 15px;
   padding: 10px;
   border-radius:  5px;
   background-color: #ffffff;
@@ -181,7 +182,9 @@
 .chat__message--message {
   margin-right: 64px;
 }
-
+.chat__message--image{
+  width:500px;
+}
 .chat__message--sender {
   margin-left: auto;
   background-color: #dcf8c6;

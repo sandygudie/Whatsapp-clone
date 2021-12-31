@@ -159,7 +159,7 @@ export default function AudioPlayer({
           />
         </div>
       </div>
-      <span className="chat__timestamp audioplayer__time">{duration}</span>
+      <span className=" audioplayer__time">{duration}</span>
     </>
   );
 }

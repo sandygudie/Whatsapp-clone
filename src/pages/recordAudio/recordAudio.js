@@ -31,6 +31,9 @@ export default function recordAudio() {
           });
 
           mediaRecorder.stop();
+
+          stream.getTracks() 
+  .forEach( track => track.stop() );
         });
       }
 
