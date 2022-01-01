@@ -1,5 +1,5 @@
 ## Whatsapp-web-clone 
-Built with React and Firebase.
+Built with React and Firebase and Material UI.
 
 - Only for Web view.
 
