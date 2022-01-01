@@ -11,6 +11,7 @@ import { createTimestamp, db, audioStorage } from "../../firebase";
 import { v4 as uuid } from "uuid";
 import "./ChatFooter.css";
 import recordAudio from "../recordAudio/recordAudio";
+import Icon from "../../components/Icon";
 
 export default function ChatFooter({
   input,
@@ -132,15 +133,15 @@ export default function ChatFooter({
     <>
       <Send
         style={{
-          width: 20,
-          height: 20,
+          width: 26,
+          height: 26,
           color: "white",
         }}
       />
       <MicRounded
         style={{
-          width: 24,
-          height: 24,
+          width: 35,
+          height: 35,
           color: "white",
         }}
       />
@@ -151,6 +152,18 @@ export default function ChatFooter({
 
   return (
     <div className="chat__footer">
+
+   
+   
+      <Icon
+                id="smiley"
+                className=" sidebar__action sidebar__action-icon sidebar__action-icon--status"
+              />
+               <Icon
+                id="attach"
+                className=" sidebar__action sidebar__action-icon sidebar__action-icon--status"
+              />
+      
       <form>
         <input
           ref={inputRef}
@@ -207,7 +220,7 @@ export default function ChatFooter({
             style={{
               width: 30,
               height: 30,
-              color: "#41bf49",
+              fill: "green",
             }}
             onClick={finishRecording}
           />

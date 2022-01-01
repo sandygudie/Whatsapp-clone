@@ -2,21 +2,29 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 62px;
+  /* height: 62px; */
   background-color: #ededed;
   z-index: 1;
-  padding: 0 10px;
-  height: 54px;
+  padding: 10px 15px;
+  /* height: 54px; */
   position: absolute;
   width: calc(100% + 56px);
   bottom: 0;
   z-index: 5;
   transform: translateZ(456px);
 }
-
+.chat__footer .MuiSvgIcon-root{
+  width: 35px;
+  height: 35px;
+  fill:#47525d;
+}
+.chat__footer svg{
+  width: 27px;
+  height: 27px;
+}
 .chat__footer > form {
-width: 88%;
-  margin-left: auto;
+width: 92%;
+ 
   display: flex
 }
 
@@ -30,9 +38,6 @@ width: 88%;
   cursor: pointer;
 }
 
-.send__btn .MuiSvgIcon-root{
-fill:#ededed !important
-}
 
 .send__btn:active {
   transform: scale(0.75);
