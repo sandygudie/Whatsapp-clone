@@ -35,8 +35,7 @@ export default function ChatMessages({
       "#21B6A8",
     ];
 
-    //  messagebox length
-    // const messagelength = message.message.length > 30;
+   
 
     let color = colorarr[Math.floor(Math.random() * colorarr.length)];
     return (
