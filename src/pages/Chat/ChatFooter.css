@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   height: 62px;
-  background-color: transparent;
+  background-color: #ededed;
   z-index: 1;
   padding: 0 10px;
   height: 54px;
@@ -15,20 +15,23 @@
 }
 
 .chat__footer > form {
-  width: 100%;
-  display: flex;
+width: 88%;
+  margin-left: auto;
+  display: flex
 }
 
 .send__btn {
   width: 46px;
   height: 46px;
-  border-radius: 50%;
-  background: #06d755;
-  box-shadow: 0px 0px 2px 0px #0000005e;
+  
   border: none;
   transition: transform 150ms;
   transform: scale(1);
   cursor: pointer;
+}
+
+.send__btn .MuiSvgIcon-root{
+fill:#ededed !important
 }
 
 .send__btn:active {
