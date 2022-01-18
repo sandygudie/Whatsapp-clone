@@ -18,7 +18,7 @@ export default function App() {
   if (!user) {
     return <Login />;
   }
-
+  localStorage.removeItem("firebaseAuthKey");
   return (
    
     <div className="app" style={{ ...page }}>

@@ -12,6 +12,7 @@ import Icon from "../../components/Icon";
 import OptionsBtn from "../../components/OptionsButton";
 import Tooltips from "../../components/Tooltips/Tooltips";
 import Alert from "../../components/Alert/Alert";
+import Login from "../Login/Login";
 
 export default function Sidebar({ user, page }) {
   const rooms = useRooms();
@@ -24,6 +25,7 @@ export default function Sidebar({ user, page }) {
 
   function signOut() {
     auth.signOut();
+    return <Login/>
   }
 
   function createRoom() {

@@ -1,12 +1,21 @@
 import { Button } from "@material-ui/core";
 import "./Login.css";
 import { auth, provider } from "../../firebase";
+import SplashScreen from "../../components/loader/SplashScreen"
 
 export default function Login() {
+  
   function login() {
-    auth.signInWithRedirect(provider);
+    try {
+      auth.signInWithRedirect(provider)
+      localStorage.setItem("firebaseAuthKey", "1");
+    } catch (err) {
+      console.log(err);
+      localStorage.removeItem("firebaseAuthKey");
+    }
   }
 
+  if (localStorage.getItem("firebaseAuthKey") === "1") return <SplashScreen />;
   return (
     <div className="app">
       <div className="login">
