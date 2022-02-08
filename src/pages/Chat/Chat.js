@@ -17,6 +17,8 @@ import { AddPhotoAlternate, ArrowBack, MoreVert } from "@material-ui/icons";
 import { v4 as uuid } from "uuid";
 import { audioStorage, createTimestamp, db, storage } from "../../firebase";
 import useChatMessages from "../../hooks/useChatMessages";
+// import TimeAgo from "javascript-time-ago";
+// import en from "javascript-time-ago/locale/en.json";
 
 export default function Chat({ user, page }) {
   const [image, setImage] = React.useState(null);
@@ -182,6 +184,8 @@ export default function Chat({ user, page }) {
           <h3 style={{ width: page.isMobile && page.width - 165 }}>
             {room?.name}
           </h3>
+          {room?.type === "personal" ? ( <p>online</p>): " " }
+         
         </div>
 
         <div className="chat__header--right">
@@ -207,11 +211,27 @@ export default function Chat({ user, page }) {
             onClose={() => setOpenMenu(null)}
             keepMounted
           >
+            {room?.type === "room" ? (  
+              <>
             <MenuItem>Group Info</MenuItem>
             <MenuItem>Select Messages</MenuItem>
             <MenuItem>Mute Notifications</MenuItem>
             <MenuItem>Clear Messages</MenuItem>
             <MenuItem onClick={deleteRoom}>Exit Group</MenuItem>
+            </>
+            )
+            : 
+            ( 
+            <>
+           <MenuItem>Contact Info</MenuItem>
+              <MenuItem>Select Messages</MenuItem>
+              <MenuItem>Close Chat</MenuItem>
+              <MenuItem>Mute Notifications</MenuItem>
+              <MenuItem>Clear Messages</MenuItem>
+              <MenuItem onClick={deleteRoom}>Delete Chat</MenuItem>
+              </>
+              ) }
+           
           </Menu>
         </div>
       </div>
@@ -224,6 +244,8 @@ export default function Chat({ user, page }) {
             " "
           )}
           <div className="chat_details">
+
+            
             <ChatMessages
               messages={messages}
               user={user}
